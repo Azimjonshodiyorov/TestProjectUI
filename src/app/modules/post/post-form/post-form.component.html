@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <h2>{{ isEditMode ? 'Edit Post' : 'Add New Post' }}</h2>
+  <form #postForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        [(ngModel)]="post.title"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+        [(ngModel)]="post.description"
+        rows="5"
+        required
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="author" class="form-label">Author</label>
+      <textarea
+        class="form-control"
+        id="author"
+        name="description"
+        [(ngModel)]="post.author"
+        rows="5"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+      {{ isEditMode ? 'Update' : 'Create' }}
+    </button>
+    <button class="btn btn-secondary" routerLink="/posts">Cancel</button>
+  </form>
+</div>

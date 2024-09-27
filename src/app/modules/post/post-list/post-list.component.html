@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <h2>Posts</h2>
+  <button class="btn btn-primary mb-3" routerLink="/posts/new">Add New Post</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts">
+        <td>{{ post.title }}</td>
+        <td>
+          <button class="btn btn-info btn-sm" routerLink="/posts/{{post.id}}">View</button>
+          <button class="btn btn-warning btn-sm" routerLink="/posts/edit/{{post.id}}">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deletePost(post.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
