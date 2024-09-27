@@ -25,3 +25,59 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+src/
+├── app/
+│   ├── core/
+│   │   ├── services/
+│   │   │   ├── post.service.ts
+│   │   │   └── user.service.ts
+│   │   └── models/
+│   │       ├── post.model.ts
+│   │       └── user.model.ts
+│   ├── shared/
+│   │   └── components/
+│   │       └── navbar/
+│   │           ├── navbar.component.html
+│   │           ├── navbar.component.ts
+│   │           └── navbar.component.css
+│   ├── modules/
+│   │   ├── auth/
+│   │   │   └── login/
+│   │   │       ├── login.component.html
+│   │   │       ├── login.component.ts
+│   │   │       └── login.component.css
+│   │   ├── layout/
+│   │   │   ├── layout.component.html
+│   │   │   ├── layout.component.ts
+│   │   │   └── layout.component.css
+│   │   ├── post/
+│   │   │   ├── post-list/
+│   │   │   │   ├── post-list.component.html
+│   │   │   │   ├── post-list.component.ts
+│   │   │   │   └── post-list.component.css
+│   │   │   ├── post-detail/
+│   │   │   │   ├── post-detail.component.html
+│   │   │   │   ├── post-detail.component.ts
+│   │   │   │   └── post-detail.component.css
+│   │   │   ├── post-form/
+│   │   │   │   ├── post-form.component.html
+│   │   │   │   ├── post-form.component.ts
+│   │   │   │   └── post-form.component.css
+│   │   ├── user/
+│   │   │   ├── user-list/
+│   │   │   │   ├── user-list.component.html
+│   │   │   │   ├── user-list.component.ts
+│   │   │   │   └── user-list.component.css
+│   │   │   ├── user-detail/
+│   │   │   │   ├── user-detail.component.html
+│   │   │   │   ├── user-detail.component.ts
+│   │   │   │   └── user-detail.component.css
+│   │   │   ├── user-form/
+│   │   │   │   ├── user-form.component.html
+│   │   │   │   ├── user-form.component.ts
+│   │   │   │   └── user-form.component.css
+│   ├── app-routing.module.ts
+│   ├── app.component.html
+│   └── app.module.ts
