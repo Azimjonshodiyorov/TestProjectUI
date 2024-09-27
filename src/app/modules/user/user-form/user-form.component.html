@@ -1,3 +1,34 @@
-<p>
-  user-form works!
-</p>
+<div class="container mt-4">
+  <h2>{{ isEditMode ? 'Edit User' : 'Add New User' }}</h2>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstName"
+        name="firstName"
+        [(ngModel)]="user.firstName"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        [(ngModel)]="user.email"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-success">
+      {{ isEditMode ? 'Update' : 'Create' }}
+    </button>
+    <button class="btn btn-secondary" routerLink="/users">Cancel</button>
+  </form>
+</div>
