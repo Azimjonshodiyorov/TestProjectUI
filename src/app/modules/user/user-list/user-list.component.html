@@ -1,3 +1,24 @@
-<p>
-  user-list works!
-</p>
+<div class="container mt-4">
+  <h2>Users</h2>
+  <button class="btn btn-primary mb-3" routerLink="/users/new">Add New User</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button class="btn btn-info btn-sm" routerLink="users/{{user.id}}">View</button>
+          <button class="btn btn-warning btn-sm" routerLink="users/edit/{{user.id}}">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
