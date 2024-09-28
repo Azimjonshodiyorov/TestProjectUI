@@ -1,1 +1,25 @@
-<h1>hello </h1>
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <h2 class="text-center h1 fw-bold mb-5">Login</h2>
+              <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Your Email</label>
+                  <input type="email" id="email" class="form-control" name="email" [(ngModel)]="user.email" required />
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.password" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="!loginForm.valid">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

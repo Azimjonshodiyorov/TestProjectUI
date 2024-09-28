@@ -5,7 +5,7 @@ import { User } from '../../../core/models/user';
 import { UserService } from '../../../core/services/user/user.service';
 
 @Component({
-  standalone: true, // Standalone komponent deb belgilash
+  standalone: true, 
   imports: [RouterModule , NgFor],
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -22,7 +22,7 @@ export class UserListComponent implements OnInit {
     (data)=>{
       this.users = data;
     })   
-  }
+  }         
 
   deleteUser(userId: number): void {
     if(!confirm("Are you sure?")) return;  // user uchun confirm qilishi uchun  

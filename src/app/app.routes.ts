@@ -6,6 +6,8 @@ import { UserListComponent } from './modules/user/user-list/user-list.component'
 import { UserFormComponent } from './modules/user/user-form/user-form.component';
 import { UserDetailComponent } from './modules/user/user-detail/user-detail.component';
 import { NgModule } from '@angular/core';
+import { RegisterComponent } from './modules/auth/register/register.component';
+import { LoginComponent } from './modules/auth/login/login.component';
 
 export const routes: Routes = [
     {path:'posts', component: PostListComponent},
@@ -16,12 +18,14 @@ export const routes: Routes = [
     {path: 'users/new', component:UserFormComponent},
     {path: 'users/edit/:id', component: UserFormComponent},
     {path: 'users/:id', component: UserDetailComponent},
-    {path: '', redirectTo: '/posts', pathMatch: 'full'},
+    { path: 'register', component: RegisterComponent },
+    { path: 'login', component: LoginComponent },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
     {path: '**', redirectTo: '/posts'}
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
 export class AppRoutingModule {}
