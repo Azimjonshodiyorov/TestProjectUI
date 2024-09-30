@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user/user.service';
-import { Router } from 'express';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Login } from '../../../core/models/login';
 
 @Component({
@@ -21,10 +21,23 @@ export class LoginComponent implements OnInit {
   { }
 
   ngOnInit() {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('' , Validators.required)
+    }); 
   }
 
-  onSubmit(loginForm): void {
-
+  onSubmit(): void {
+    this.userService.logIn(this.user).then(
+      (data) => {
+        console.log(data);
+        this.router.navigate(['post', 'login']);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+   
   }
 
 

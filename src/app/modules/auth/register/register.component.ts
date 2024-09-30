@@ -12,6 +12,8 @@ import { Gender } from '../../../core/models/gender.enum';
 })
 export class RegisterComponent implements OnInit {
 
+  registerForm!: FormGroup;
+
   register: Register = {
     firstName: '',
     lastName: '',
@@ -20,46 +22,29 @@ export class RegisterComponent implements OnInit {
     email: '',
     password: '',
     phoneNumber: '',
-    confirmPassword: ''  // Confirm password should match with password field 
-  } ;
+    confirmPassword: ''
+  };
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required, Validators.minLength(8)],
-      confirmPassword: ['', Validators.required, Validators.minLength(8)]
-    });   
+      firstName: [this.register.firstName, Validators.required],
+      lastName: [this.register.lastName, Validators.required],
+      birthDate: [this.register.birthDate, Validators.required],
+      gender: [this.register.gender, Validators.required],
+      email: [this.register.email, [Validators.required, Validators.email]],
+      password: [this.register.password, [Validators.required, Validators.minLength(8)]],
+      confirmPassword: [this.register.confirmPassword, [Validators.required, Validators.minLength(8)]]
+    });
   }
-
 
   onRegisterSubmit(): void {
-        if (!form.valid) {
-      console.error('Form is incomplete');
-      alert('Please fill out all required fields correctly.');
+    if (!this.registerForm.valid) {
+      console.error('Forma to\'liq emas yoki noto\'g\'ri to\'ldirilgan.');
+      alert('Iltimos, barcha kerakli maydonlarni to\'g\'ri to\'ldiring.');
       return;
     }
-  }
-
-
-  validateForm(): boolean {
-    if (this.register.password !== this.register.confirmPassword) {
-      alert('Passwords do not match!');
-      return false;
-    }
-
-    if (!this.validateEmail(this.register.email)) {
-      alert('Please enter a valid email address.');
-      return false;
-    }
-
-    // Boshqa validatsiyalarni qo'shishingiz mumkin
-    return true;
-  }
-
-  validateEmail(email: string): boolean {
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailPattern.test(email);
+    console.log(this.registerForm.value);
   }
 }

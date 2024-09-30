@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user';
 import { signUp } from '../../models/signUp';
+import { Login } from '../../models/login';
 
 
 @Injectable({
@@ -30,4 +31,38 @@ constructor(private http : HttpClient) {
  deleteUser(id: number): Observable<User> {
    return this.http.delete<User>(`${this.userApiUrl}/${id}`);
  }
+
+
+ getUserByEmail(email: string): Observable<User> {
+   return this.http.get<User>(`${this.userApiUrl}?email=${email}`);
+ }  
+                              
+
+ logIn(login: Login): Promise<User> {
+  return this.http.post<User>(`${this.userApiUrl}/login`, login).toPromise()
+    .then((data) => {
+      if (data) {
+        return data;
+      }
+      throw new Error("No user data returned");
+    })
+    .catch((error) => {
+      console.log('Error:', error);
+      throw error;
+    });
+}
+
+registerUser(user: User): Promise<User> {
+  return this.http.post<User>(this.userApiUrl, user).toPromise()
+   .then((data) => {
+      if (data) {
+        return data;
+      }
+      throw new Error("No user data returned");
+    })
+   .catch((error) => {
+      console.log('Error:', error);
+      throw error;
+    }); 
+}
 }
